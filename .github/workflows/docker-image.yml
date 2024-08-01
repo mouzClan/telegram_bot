@@ -26,8 +26,8 @@ jobs:
         mkdir -p config
         echo "${{ secrets.ENV_CONTENT }}" > config/config.env
 
-      run: |
-        echo "${{ secrets.YML_CONTENT }}" > config/config.yml
+    - name: Create yml file
+      run: echo "${{ secrets.YML_CONTENT }}" > config/config.yml
 
     - name: Deploy with Docker Compose
       run: docker-compose --env-file config/config.env up --build -d
